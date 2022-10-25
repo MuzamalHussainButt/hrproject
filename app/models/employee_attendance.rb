@@ -16,12 +16,13 @@ class EmployeeAttendance < ApplicationRecord
             temp_array["PunchOutTime"]=punchoutTime(employee.employee_detail_id,employee.created_at)
             temp_array["PunchInTime"]=punchinTime(employee.employee_detail_id,employee.created_at)
             temp_array["Date"]=employee.created_at.strftime("%D")
+            temp_array["Dday"]=time_(employee.employee_detail_id,employee.created_at)
             if n == 0
             temp_array["ename"] = employee.employee_detail.emp_name
-            temp_array["id"] = employee.employee_detail_id
-            n=n+1
+            temp_array["emp_id"] = employee.employee_detail_id
             end
               names << temp_array
+              n=n+1
           end
         end
       end
@@ -122,7 +123,8 @@ class EmployeeAttendance < ApplicationRecord
               if a==b and check==nil
                 return x.created_at.strftime("%H:%M:%S")
               end
-              if a==b and check==1
+              c =x.created_at.strftime("%m")
+              if a==b and check==1 and c == cur_month
                 return x.created_at
               end
             end
@@ -144,6 +146,7 @@ class EmployeeAttendance < ApplicationRecord
             arrivaltime = check_in.first.created_at
             return arrivaltime.strftime("%H:%M:%S")
           end
+         
           if check_in.present? and check==1
             return check_in.first.created_at
           end
@@ -163,20 +166,12 @@ class EmployeeAttendance < ApplicationRecord
     return total
   end
 
-  def self.time_(id=nil)
-    check_in  =  EmployeeAttendance.where(employee_detail_id: id, status: "punch-in")
-    check_out =  EmployeeAttendance.where(employee_detail_id: id, status: "punch-out")
-    arrivaltime = check_in.first.created_at
-    if check_out.present?
-      exittime= check_out.first.created_at
-      time = ((((exittime - arrivaltime).to_f)/60)/60)
+  def self.time_(id=nil,temp=nil)
+      time = officeTime(id,temp)
       if time >= 6
         return "full day"
       end
+    else 
       return "half day"
     end
-  else
-    return "NO CHECK-OUT"
-  end
-
 end

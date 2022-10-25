@@ -37,15 +37,17 @@
       <th> PunchInTime </th>
       <th> PunhcOutTIme </th>
       <th> TotalTime </th>
+      <th> Day </th>
       <th> Date </th>
     </tr>
     <% @employee_attendance.each_with_index do |employee, index| %>
       <tr>
       <th><%= employee["ename"] %></th>
-      <th><%= employee["id"] %></th>
+      <th><%= employee["emp_id"] %></th>
       <th><%= employee["PunchInTime"] %></th>
       <th><%= employee["PunchOutTime"] %></th>
       <th><%= employee["Time"] %></th>
+      <th><%= employee["Dday"] %></th> 
       <th><%= employee["Date"] %></th> 
       
     </tr>
