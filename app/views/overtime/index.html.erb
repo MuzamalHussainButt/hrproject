@@ -1,0 +1,58 @@
+<div class="container"
+    <div id="title">
+        <center>
+            <br><b><header>HR Management System</header></b>
+        </center>
+    </div>
+</div>
+
+<br>
+
+<div>
+    <center><h4> OverTime </h4> </center>
+</div>
+
+<div id="back">
+    <%= link_to "Back", home_index_path(), class: 'back_button'%>
+</div>
+
+<div id="content">
+    <center>
+        <%= form_tag("/overtime",method:"get") do %>
+            <div>
+                <%=text_field_tag(:id,"",class:"input form-control",:placeholder => "Enter employee id") %>
+            </div>
+            <div>
+                <%= submit_tag("Get",class:"get_button") %>
+            </div>
+        <%end%>
+    </center>
+</div>
+
+
+<% if @overtime.present? %>
+    <center>
+        <div id="result">
+            <table class="table table-bordered">
+                <tr>
+                    <th>  Employee Name </th>
+                    <th>  Employee Id </th>
+                    <th>  Day </th>
+                    <th>  Shift  </th>
+                    <th>  Per Hour Rate </th>
+                    <th>  TotalTime </th>
+                </tr>
+                    <% @overtime.each_with_index do |ot, index | %>
+                        <tr>
+                            <td><%= ot["emp_name"]%> </td>
+                            <td><%= ot["emp_id"]%> </td>
+                            <td><%= ot["day"]%> </td>
+                            <td><%= ot["shift"]%> </td>
+                            <td><%= ot["perhour"]%> </td>
+                            <td><%= ot["overtime"]%> </td>
+                        </tr>
+                    <% end %>
+            </table>
+        </dvi>
+    </center>
+<%end%>

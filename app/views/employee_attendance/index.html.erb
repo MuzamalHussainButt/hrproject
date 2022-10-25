@@ -1,0 +1,56 @@
+<div class="container">
+ 
+<div id="title">
+		<center>
+			<br><b><header>HR Management System</header></b>
+		</center>
+	</div>
+  <br>
+  <div>
+    <center><b><h4> Employee Attendance </h4></b></center>
+  </div>
+
+  <div id="back">
+		<%= link_to "Back", home_index_path(), class: 'back_button' %>
+	</div>
+		<div id="content">
+			<center>
+				<%= form_tag("/employee_attendance", method: "get") do %>
+				<div>	  
+				  <%= text_field_tag(:id, "", class: 'input form-control', :placeholder => "Enter employee Id") %>
+				</div>
+				<div>
+		  			<%= submit_tag("Get", class: 'get_button')  %>
+				</div>
+				<% end %>
+			</center>
+</div>
+        
+	<% if @employee_attendance.present? %>
+          
+    <center>
+    <div id="result">
+    <table class="table table-bordered">
+    <tr>
+      <th> Employee NAME </th>
+      <th> Employee ID </th>  
+      <th> PunchInTime </th>
+      <th> PunhcOutTIme </th>
+      <th> TotalTime </th>
+      <th> Date </th>
+    </tr>
+    <% @employee_attendance.each_with_index do |employee, index| %>
+      <tr>
+      <th><%= employee["ename"] %></th>
+      <th><%= employee["id"] %></th>
+      <th><%= employee["PunchInTime"] %></th>
+      <th><%= employee["PunchOutTime"] %></th>
+      <th><%= employee["Time"] %></th>
+      <th><%= employee["Date"] %></th> 
+      
+    </tr>
+    <% end %>
+  </div>
+    </center>
+	<% end %>
+</div>

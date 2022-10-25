@@ -1,0 +1,24 @@
+<div class="container">
+	<div id="title">
+		<center>
+			<br><b><header>HR Management System </header></b>
+		</center>
+	</div>
+
+	<center>
+		<div id="links">
+
+			<%= link_to "Admin", rails_admin_path(),  class: "button" %> 
+			<%= link_to "Employee Salary", employee_salaries_path(), class: "button" %>
+			<%= link_to "High Paid", high_paid_index_path(), class: "button" %>
+			<%= link_to "High Performers", high_performance_high_leave_index_path(), class: "button" %>
+			<%= link_to "Low Performers", low_performance_high_salaries_path(), class: "button" %>
+			<%= link_to "Attandence", employee_attendance_index_path(), class:"button" %>
+			<%= link_to "Reimbursement", reimbursement_index_path(), class:"button"%>
+			<%= link_to "OverTime", overtime_index_path(), class:"button"%>
+			<%= link_to "Interviewees", interviews_path(),class:"button"%>
+			<%= link_to "Complaints", complaint_index_path(), class:"button"%>
+
+		</div>
+	</center>
+</div>

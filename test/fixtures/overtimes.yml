@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shiftname: MyString
+  rateperhour: 
+  employee_detail: one
+
+two:
+  shiftname: MyString
+  rateperhour: 
+  employee_detail: two

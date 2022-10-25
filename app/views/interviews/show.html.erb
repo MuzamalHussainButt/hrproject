@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+    <div class="container">
+      <center>
+        <div id="title">
+          <br><b><header> HR Management System </header><b>
+        </div>
+      </center>
+    </div>
+    <br>
+
+
+    <p>
+      <strong>Title:</strong>
+      <%= @interview.title %>
+    </p>
+
+    <%= link_to 'Download', @interview.file, download: ''  %>
+    <%= link_to 'View file', @interview.file %>
+
+
+
+    <p>
+      <strong>Description:</strong>
+      <%= @interview.description %>
+    </p>
+
+    <p>
+      <strong>Name:</strong>
+      <%= @interview.name %>
+    </p>
+
+    <p>
+      <strong>Employee detail:</strong>
+      <%= @interview.employee_detail %>
+    </p>
+
+    <%= link_to 'Edit', edit_interview_path(@interview) %> |
+    <%= link_to 'Back', interviews_path %>
+</center>

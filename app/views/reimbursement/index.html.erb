@@ -1,0 +1,63 @@
+<div class="container">
+    <div id="title">
+        <center>
+          <br>   <b><header> HR Management System <header></b>
+        </center>
+    </div>
+</div>
+
+<br>
+
+<div>
+    <center><h4> Reimbursement </h4> </center>
+</div>
+
+<div id="Back">
+    <%= link_to "Back", home_index_path(), class: 'back_button'%>
+</div>
+
+<div id="content">
+    <center>
+        <%= form_tag("/reimbursement",method:"get") do %>
+            <div>
+                <%= text_field_tag(:id, "", class: 'input form-control', :placeholder => "Enter Employee Id") %>
+            </div>
+            
+            <div>
+                <%= submit_tag("Get",class:'get_button')%>
+            </div>
+        <%end%>
+    </center>
+</div>
+
+
+<% if @reimbursement.present? %>
+    <center>
+            <div id="result">
+                <table class="table table-bordered">
+                    <tr>
+                       <th> Employee Name </th>
+                        <th>Employee Id </th>
+                        <th>Nature </th>
+                        <th>Reason </th>
+                        <th>CashInHand </th>
+                        <th>SpendAmmount </th>
+                        <th>Remaining </th>
+                        <th>Spent Date </th>
+                    </tr>
+                    <% @reimbursement.each_with_index do |reim, index| %>
+                        <tr> 
+                            <td><%= reim["emp_name"] %> </td>
+                            <td><%= reim["emp_id"]%></td>
+                            <td><%= reim["type"]%></td>
+                            <td><%= reim["reason"]%></td>
+                            <td><%= reim["cashInHand"]%></td>
+                            <td><%= reim["spendammount"]%></td>
+                            <td><%= reim["remaining"]%></td>
+                            <td><%= reim["spent_date"]%></td>
+                        </tr>
+                    <%end%>
+                </div>
+            </div>
+    </center>
+<%end%>

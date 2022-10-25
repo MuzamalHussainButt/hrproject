@@ -1,0 +1,63 @@
+<div class="container">
+  <center>
+    <div id="title">
+      <br><b><header> HR Management System </header><b>
+    </div>
+  </center>
+</div>
+
+
+ <div>
+      <br><center><b><h4> Add Record </h4> </b></center>
+ </div>
+
+<center>
+
+<%= form_with(model: interview, local: true) do |form| %>
+    <% if interview.errors.any? %>
+        <div id="error_explanation">
+      
+        <h2><%= pluralize(interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+        <ul>
+        <% interview.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <div class="field">
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :employee_ID %>
+    <%= form.text_field :employee_detail_id %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</center>
